@@ -1,0 +1,15 @@
+name: Publish to npm 
+
+on:
+  push:
+    branches:
+      - '*'
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
