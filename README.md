@@ -16,7 +16,7 @@ we can call the Firestore REST API at Cloud Functions, with the ID token of a us
 const { serialize, deserialize } = require("this_module");
 ```
 
-## Deserialization
+### Deserialization
 Suppose the response of a read request contains a document like:
 ```js
 {
@@ -39,7 +39,7 @@ Calling `deserialize` on the value of `fields` gives us:
 }
 ```
 
-## Serialization
+### Serialization
 Suppose we want to save the following object as a document:
 ```js
 {
