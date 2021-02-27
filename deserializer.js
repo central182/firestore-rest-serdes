@@ -1,3 +1,5 @@
+const admin = require("firebase-admin");
+
 function deserialize(fields) {
   return Object.fromEntries(
     Object.entries(fields).map(([key, value]) => {
@@ -19,24 +21,24 @@ function decode(value) {
   if ("doubleValue" in value) {
     return value.doubleValue;
   }
-  // TODO: use firestore Timestamp type
   if ("timestampValue" in value) {
-    return value.timestampValue;
+    return admin.firestore.Timestamp.fromDate(new Date(value.timestampValue));
   }
   if ("stringValue" in value) {
     return value.stringValue;
   }
-  // TODO: when is bytesValue used?
   if ("bytesValue" in value) {
-    return null;
+    return Buffer.from(value.bytesValue, "base64");
   }
-  // TODO: use firestore DocumentReference type
   if ("referenceValue" in value) {
+    // The DocumentReference can't be recovered without the reference
+    // to the related Firestore instance.
+    // For brevity, only the path of the document is returned here.
     return value.referenceValue;
   }
-  // TODO: use firestore GeoPoint type
   if ("geoPointValue" in value) {
-    return value.geoPointValue;
+    const { latitude, longitude } = value.geoPointValue;
+    return new admin.firestore.GeoPoint(latitude, longitude);
   }
   if ("arrayValue" in value) {
     return value.arrayValue.values.map((value) => decode(value));
