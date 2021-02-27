@@ -1,6 +1,6 @@
 # firestore-rest-serdes
 
-The Firestore REST API has a unique way of representing [Documents](https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents#Document) and this repository is here to provide a serializer and a deserializer that convert between ordinary JSON objects and those compatible with the Firestore REST API.
+The Firestore REST API has a unique way of representing [Documents](https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents#Document) and this module is here to provide a serializer and a deserializer that convert between ordinary JSON objects and those compatible with the Firestore REST API.
 
 ## Why bother with the REST API at all?
 It is not possible for the [Node.js Admin SDK](https://firebase.google.com/docs/reference/admin/node) to make Firestore requests on behalf of a user (that is, using the ID token of a user and triggering the security rules).
@@ -59,5 +59,3 @@ Calling `serialize` on this object gives us:
 }
 ```
 And then we can put the resultative object in the body of a write request.
-
-## Caveats
