@@ -31,9 +31,7 @@ function decode(value) {
     return Buffer.from(value.bytesValue, "base64");
   }
   if ("referenceValue" in value) {
-    // The DocumentReference can't be recovered without the reference
-    // to the related Firestore instance.
-    // For brevity, only the path of the document is returned here.
+    // We return the path as it is and let the caller decide how to deal with it.
     return value.referenceValue;
   }
   if ("geoPointValue" in value) {
