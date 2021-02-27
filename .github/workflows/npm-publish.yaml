@@ -1,0 +1,18 @@
+name: Publish to npm 
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  npm-publish:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: rm *.test.js
+      - run: rm -rf .github
+      - run: echo '//registry.npmjs.org/:_authToken=${NPM_TOKEN}' > .npmrc
+      - run: npm publish
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
