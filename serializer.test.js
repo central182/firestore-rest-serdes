@@ -1,2 +1,1 @@
-test("nothing", () => {
-})
+test("nothing", () => {});
