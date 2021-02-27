@@ -11,7 +11,7 @@ In a typical scenario where
 - Firestore security rules have been set up as a means of authorization
 - making Firestore requests at the front end is not appropriate
 
-we can call the Firestore REST API at Cloud Functions, with the ID token of a user and hence triggering the security rules.
+we can call the Firestore REST API at the back end (e.g. Cloud Functions), with the ID token of a user and hence triggering the security rules.
 
 ## How to use this module
 
