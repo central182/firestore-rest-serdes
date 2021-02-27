@@ -1,0 +1,14 @@
+name: Run Jest
+
+on:
+  push:
+    branches-ignore:
+      - main
+
+jobs:
+  jest:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v2
+      - run: npm ci
+      - run: npm test
