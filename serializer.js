@@ -19,7 +19,7 @@ function encode(value) {
   }
   if (typeof value === "number" && Number.isInteger(value)) {
     return {
-      integerValue: value,
+      integerValue: String(value),
     };
   }
   if (typeof value === "number") {

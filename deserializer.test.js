@@ -82,7 +82,7 @@ describe("deserialize", () => {
           mapValue: {
             fields: {
               zero: {
-                integerValue: 0,
+                integerValue: "0",
               },
               hello: {
                 stringValue: "world",
@@ -104,7 +104,7 @@ describe("deserialize", () => {
                 mapValue: {
                   fields: {
                     zero: {
-                      integerValue: 0,
+                      integerValue: "0",
                     },
                     hello: {
                       stringValue: "world",
