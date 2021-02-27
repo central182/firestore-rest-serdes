@@ -1,5 +1,3 @@
-const admin = require("firebase-admin");
-
 function deserialize(fields) {
   return Object.fromEntries(
     Object.entries(fields).map(([key, value]) => {
@@ -22,21 +20,20 @@ function decode(value) {
     return value.doubleValue;
   }
   if ("timestampValue" in value) {
-    return admin.firestore.Timestamp.fromDate(new Date(value.timestampValue));
+    return value.timestampValue;
   }
   if ("stringValue" in value) {
     return value.stringValue;
   }
   if ("bytesValue" in value) {
-    return Buffer.from(value.bytesValue, "base64");
+    return value.bytesValue;
   }
   if ("referenceValue" in value) {
-    // We return the path as it is and let the caller decide how to deal with it.
     return value.referenceValue;
   }
   if ("geoPointValue" in value) {
     const { latitude, longitude } = value.geoPointValue;
-    return new admin.firestore.GeoPoint(latitude, longitude);
+    return { latitude, longitude };
   }
   if ("arrayValue" in value) {
     return value.arrayValue.values.map((value) => decode(value));
