@@ -1,4 +1,7 @@
 {
+  "name": "firestore-rest-serdes",
+  "version": "0.0.1",
+  "main": "index.js",
   "scripts": {
     "test": "jest"
   },
