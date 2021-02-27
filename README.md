@@ -16,7 +16,7 @@ we can call the Firestore REST API at the back end (e.g. Cloud Functions), with 
 ## How to use this module
 
 ```js
-const { serialize, deserialize } = require("this_module");
+const { serialize, deserialize } = require("firestore-rest-serdes");
 ```
 
 ### Deserialization
