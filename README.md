@@ -1,4 +1,4 @@
-# firestore-rest-serdes
+# Firestore REST SerDes
 
 The Firestore REST API has a unique way of representing [Documents](https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.documents#Document) and this module is here to provide a serializer and a deserializer that convert between ordinary JSON objects and those compatible with the Firestore REST API.
 
