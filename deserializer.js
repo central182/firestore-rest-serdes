@@ -7,34 +7,37 @@ function deserialize(fields) {
 }
 
 function decode(value) {
-  if ("stringValue" in value) {
-    return value.stringValue;
-  }
-  if ("doubleValue" in value) {
-    return value.doubleValue;
-  }
-  if ("integerValue" in value) {
-    return parseInt(value.integerValue);
+  if ("nullValue" in value) {
+    return null;
   }
   if ("booleanValue" in value) {
     return value.booleanValue;
   }
-  if ("nullValue" in value) {
-    return null;
+  if ("integerValue" in value) {
+    return parseInt(value.integerValue);
+  }
+  if ("doubleValue" in value) {
+    return value.doubleValue;
   }
   // TODO: use firestore Timestamp type
   if ("timestampValue" in value) {
     return value.timestampValue;
   }
-  // TODO: use firestore GeoPoint type
-  if ("geoPointValue" in value) {
-    return value.geoPointValue;
+  if ("stringValue" in value) {
+    return value.stringValue;
+  }
+  // TODO: when is bytesValue used?
+  if ("bytesValue" in value) {
+    return null;
   }
   // TODO: use firestore DocumentReference type
   if ("referenceValue" in value) {
     return value.referenceValue;
   }
-  // TODO: when is bytesValue used?
+  // TODO: use firestore GeoPoint type
+  if ("geoPointValue" in value) {
+    return value.geoPointValue;
+  }
   if ("arrayValue" in value) {
     return value.arrayValue.values.map((value) => decode(value));
   }
