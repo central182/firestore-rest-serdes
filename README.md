@@ -13,8 +13,10 @@ we can call the Firestore REST API at Cloud Functions, with the ID token of a us
 
 ## How to use this module
 ```js
-const {serialize, deserialize} = require("this_module");
+const { serialize, deserialize } = require("this_module");
 ```
+
+## Deserialization
 Suppose the response of a read request contains a document like:
 ```js
 {
@@ -29,7 +31,7 @@ Suppose the response of a read request contains a document like:
   }
 }
 ```
-Calling `serialize` on the value of `fields` gives us:
+Calling `deserialize` on the value of `fields` gives us:
 ```js
 {
   hello: "world",
@@ -38,7 +40,24 @@ Calling `serialize` on the value of `fields` gives us:
 ```
 
 ## Serialization
+Suppose we want to save the following object as a document:
 ```js
+{
+  hello: "world",
+  zero: 0
+}
 ```
+Calling `serialize` on this object gives us:
+```js
+{
+  hello: {
+    stringValue: "world"
+  },
+  zero: {
+    integerValue: "0"
+  }
+}
+```
+And then we can put the resultative object in the body of a write request.
 
 ## Caveats
