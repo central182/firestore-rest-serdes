@@ -11,7 +11,34 @@ In a typical scenario where
 
 we can call the Firestore REST API at Cloud Functions, with the ID token of a user and hence triggering the security rules.
 
-## Deserialization
-
+## How to use this module
+```js
+const {serialize, deserialize} = require("this_module");
+```
+Suppose the response of a read request contains a document like:
+```js
+{
+  // Other key-value pairs that we don't care
+  fields: {
+    hello: {
+      stringValue: "world"
+    },
+    zero: {
+      integerValue: "0"
+    }
+  }
+}
+```
+Calling `serialize` on the value of `fields` gives us:
+```js
+{
+  hello: "world",
+  zero: 0
+}
+```
 
 ## Serialization
+```js
+```
+
+## Caveats
