@@ -1,5 +1,3 @@
-function serialize() {
+function serialize() {}
 
-}
-
-module.exports = serialize
+module.exports = serialize;

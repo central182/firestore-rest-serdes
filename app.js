@@ -1,7 +1,6 @@
 #!/usr/bin/env node
-const deserialize = require("./deserializer")
-const serialize = require("./serializer")
-console.log(deserialize("hello world"))
+const deserialize = require("./deserializer");
+const serialize = require("./serializer");
 
-const source = require("fs").readFileSync("source.json", "utf-8")
-console.log(source)
+const source = JSON.parse(require("fs").readFileSync("source.json", "utf-8"));
+console.log(deserialize(source));

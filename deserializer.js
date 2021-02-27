@@ -1,5 +1,15 @@
-function deserialize() {
-  return "deserialized"
+function deserialize(fields) {
+  return Object.fromEntries(
+    Object.entries(fields).map(([key, value]) => {
+      return [key, decode(value)];
+    })
+  );
 }
 
-module.exports = deserialize
+function decode(value) {
+  if ("stringValue" in value) {
+    return value.stringValue;
+  }
+}
+
+module.exports = deserialize;
