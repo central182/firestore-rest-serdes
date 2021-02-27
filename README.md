@@ -1,0 +1,1 @@
+# firestore-rest-serdes
