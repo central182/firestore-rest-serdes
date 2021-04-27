@@ -36,7 +36,12 @@ function decode(value) {
     return { latitude, longitude };
   }
   if ("arrayValue" in value) {
-    return value.arrayValue.values.map((value) => decode(value));
+    if ("values" in value.arrayValue) {
+      return value.arrayValue.values.map((value) => decode(value));
+    }
+    else {
+      return [];
+    }
   }
   if ("mapValue" in value) {
     return deserialize(value.mapValue.fields);

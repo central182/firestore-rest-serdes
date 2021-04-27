@@ -63,6 +63,16 @@ describe("deserialize", () => {
     ).toEqual({ field: { latitude: 5, longitude: 3.14 } });
   });
 
+  test("empty arrayValue", () => {
+    expect(
+      deserialize({
+        field: {
+          arrayValue: {},
+        },
+      })
+    ).toEqual({ field: [] });
+  });
+
   test("arrayValue", () => {
     expect(
       deserialize({
