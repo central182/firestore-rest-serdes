@@ -85,6 +85,16 @@ describe("deserialize", () => {
     ).toEqual({ field: [0, "hello world"] });
   });
 
+  test("empty mapValue", () => {
+    expect(
+      deserialize({
+        field: {
+          mapValue: {},
+        },
+      })
+    ).toEqual({ field: {} });
+  });
+
   test("mapValue", () => {
     expect(
       deserialize({

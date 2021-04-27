@@ -38,13 +38,16 @@ function decode(value) {
   if ("arrayValue" in value) {
     if ("values" in value.arrayValue) {
       return value.arrayValue.values.map((value) => decode(value));
-    }
-    else {
+    } else {
       return [];
     }
   }
   if ("mapValue" in value) {
-    return deserialize(value.mapValue.fields);
+    if ("fields" in value.mapValue) {
+      return deserialize(value.mapValue.fields);
+    } else {
+      return {};
+    }
   }
   return null;
 }
